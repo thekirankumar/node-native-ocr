@@ -2,17 +2,8 @@ const path = require('path')
 let bindings
 
 const isElectron = process.versions.hasOwnProperty('electron')
-const ocrPackagePath = 'node_modules/node-native-ocr'
-
-if (isElectron) {
-  const electron = require("electron")
-  const appPath = (electron.app || electron.remote.app).getAppPath()
-  const modulePath = path.resolve(appPath, ocrPackagePath, 'build/Release/node-native-ocr')
-  bindings = __non_webpack_require__(modulePath)
-} else {
-  bindings = require('../build/Release/node-native-ocr.node')
-}
-
+const ocrPackagePath = 'node_modules/@thekirankumar/node-native-ocr'
+bindings = require('../build/Release/node-native-ocr.node')
 
 const DEFAULT_LANG = 'eng'
 const LANG_DELIMITER = '+'
